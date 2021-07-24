@@ -1,0 +1,74 @@
+{% from 'skip-link/macro.njk' import skipLink %}
+{% from 'header/macro.njk' import header %}
+{% from 'footer/macro.njk' import footer %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ metaTitle }}</title>
+        <link rel="stylesheet" href="js/nhsuk.min.js" defer>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+
+    <body>
+        <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+        {{ skipLink({
+        "href": "#maincontent",
+        "text": "Skip to main content"
+        }) }}
+
+        {% from 'header/macro.njk' import header %}
+
+        {{ header({
+            "showNav": "false",
+            "showSearch": "false"
+          })
+        }}
+
+        <main id="maincontent">
+            <section class="nhsuk-section app-section">
+                <div class="nhsuk-width-container">
+                    <div class="nhsuk-grid-row">
+                        <div class="nhsuk-grid-column-full app-section__content">
+                            <div class="nhsuk-u-reading-width">
+                                 {% block main %}{% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        {# {{ footer({ 
+            "links": [
+                {
+                "URL": "#",
+                "label": "Accessibility statement"
+                },
+                {
+                "URL": "#",
+                "label": "Contact us"
+                },
+                {
+                "URL": "#",
+                "label": "Cookies"
+                },
+                {
+                "URL": "#",
+                "label": "Privacy policy"
+                },
+                {
+                "URL": "#",
+                "label": "Terms and conditions"
+                }
+            ],
+            "classes": 'nhsuk-footer__list--three-columns'
+        })}} #}
+       
+    </body>
+
+</html>
